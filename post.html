@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Post</title>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <main id="post-container"></main>
+</body>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+
+  fetch('data/posts.json')
+    .then(res => res.json())
+    .then(posts => {
+      const post = posts.find(p => p.id === id);
+      const container = document.getElementById('post-container');
+      container.innerHTML = `<h1>${post.title}</h1>
+                             <p><em>${post.author}, ${post.date}</em></p>
+                             <p>${post.content}</p>`;
+
+      const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "author": {
+          "@type": "Person",
+          "name": post.author
+        },
+        "datePublished": post.date,
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": window.location.href
+        }
+      };
+
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.textContent = JSON.stringify(jsonLd);
+      document.head.appendChild(script);
+    });
+</script>
+</html>

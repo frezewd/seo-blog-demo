@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "title": "Core Web Vitals in 2025",
+    "author": "Jane Doe",
+    "date": "2025-04-01",
+    "content": "Largest Contentful Paint (LCP), First Input Delay (FID)...",
+    "image": "images/post1.jpg"
+  },
+  {
+    "id": "2",
+    "title": "Structured Data Simplified",
+    "author": "Jane Doe",
+    "date": "2025-04-05",
+    "content": "JSON-LD is the preferred format for structured data...",
+    "image": "images/post2.jpg"
+  }
+]
